@@ -1,0 +1,68 @@
+:root{
+  --bg:#0b0f18; --fg:#e6eefc; --muted:#9bb0ca;
+  --card:#0f1624; --border:#1f2a3a; --accent:#1f6feb;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font:16px/1.6 system-ui,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--fg)}
+a{color:inherit}
+
+.header{
+  display:flex; align-items:center; justify-content:space-between;
+  gap:16px; padding:20px 24px; border-bottom:1px solid var(--border);
+}
+.subtitle{color:var(--muted); margin:4px 0 0}
+.wrap{max-width:1100px;margin:0 auto;padding:24px}
+.tools{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(320px,1fr))}
+.card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:16px}
+.card-title{margin:0 0 6px}
+.muted{color:var(--muted)}
+.grid{display:grid;gap:12px;grid-template-columns:repeat(2,minmax(0,1fr))}
+@media (max-width:720px){ .grid{grid-template-columns:1fr} }
+.row{display:flex;gap:10px;flex-wrap:wrap;margin:12px 0}
+
+label{display:flex;flex-direction:column;gap:6px;font-weight:600}
+input,select,textarea{
+  width:100%;padding:10px;border-radius:10px;border:1px solid var(--border);
+  background:#111827;color:var(--fg); outline:none;
+}
+textarea.output{min-height:140px;resize:vertical}
+.output.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,"Roboto Mono",monospace}
+.btn{
+  background:var(--accent);color:white;border:none;border-radius:10px;
+  padding:10px 14px;cursor:pointer;transition:transform .02s ease;
+}
+.btn:active{transform:translateY(1px)}
+.btn.ghost{background:transparent;border:1px solid var(--border);color:var(--fg)}
+.btn.ghost:hover{border-color:#2a3a55}
+
+.footer{padding:20px;text-align:center;border-top:1px solid var(--border);margin-top:28px;color:var(--muted)}
+
+#toast{
+  position:fixed;left:50%;bottom:24px;transform:translateX(-50%);
+  background:#0b1220;border:1px solid var(--border);color:var(--fg);
+  padding:10px 14px;border-radius:10px;box-shadow:0 8px 20px rgba(0,0,0,.35);
+  opacity:0;pointer-events:none;transition:opacity .25s ease;
+}
+#toast.show{opacity:1}
+
+html[data-theme="light"]{
+  --bg:#f7f9fc;
+  --fg:#0b1220;
+  --muted:#516076;
+  --card:#ffffff;
+  --border:#e5ecf6;
+  --accent:#1f6feb;
+}
+html[data-theme="light"] input,
+html[data-theme="light"] select,
+html[data-theme="light"] textarea{
+  background:#fff; color:#0b1220; border-color:#d5e0ee;
+}
+
+#theme-toggle{
+  font-size: 1.2rem;
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+}

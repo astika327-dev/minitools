@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mini-Tools — Web Utils</title>
+  <link rel="stylesheet" href="assets/css/main.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="brand">
+      <h1>Mini-Tools</h1>
+      <p class="subtitle">Small JS utilities: quote calculator, SOP printer, name helper, WhatsApp link, and mailto builder.</p>
+    </div>
+    <button id="theme-toggle" class="btn ghost" aria-label="Toggle theme">Toggle Theme</button>
+  </header>
+
+  <main class="wrap">
+    <section class="tools">
+
+      <!-- Quote Calculator -->
+      <article class="tool card" id="tool-quote">
+        <h2 class="card-title">Quote Calculator</h2>
+        <p class="muted">Compute stay cost: nights × rate + tax (and optional discount).</p>
+        <div class="grid">
+          <label> Nights
+            <input id="q-nights" type="number" min="1" value="1" inputmode="numeric" />
+          </label>
+          <label> Rate / Night
+            <input id="q-rate" type="number" min="0" value="800000" inputmode="numeric" />
+          </label>
+          <label> Tax (%)
+            <input id="q-tax" type="number" min="0" value="10" inputmode="decimal" />
+          </label>
+          <label> Discount (%)
+            <input id="q-disc" type="number" min="0" value="0" inputmode="decimal" />
+          </label>
+          <label> Currency
+            <select id="q-curr">
+              <option value="IDR" selected>IDR</option>
+              <option value="USD">USD</option>
+            </select>
+          </label>
+        </div>
+        <div class="row">
+          <button class="btn" id="q-calc">Calculate</button>
+          <button class="btn ghost" id="q-copy">Copy</button>
+          <button class="btn ghost" id="q-reset">Reset</button>
+        </div>
+        <textarea id="q-out" class="output" readonly placeholder="Result will appear here…"></textarea>
+      </article>
+
+      <!-- SOP Printer (Hospitality) -->
+      <article class="tool card" id="tool-sop">
+        <h2 class="card-title">SOP Printer (Hospitality)</h2>
+        <p class="muted">Generate room-inspection / cleaning SOP text you can copy, print, or download.</p>
+        <div class="grid">
+          <label> Villa / Room
+            <input id="sop-room" placeholder="Villa A / 102" />
+          </label>
+          <label> Inspector
+            <input id="sop-by" placeholder="Staff name" />
+          </label>
+          <label> Template
+            <select id="sop-tpl">
+              <option value="pre">Pre-Check-In Inspection</option>
+              <option value="clean">Room Cleaning</option>
+              <option value="checkout">Guest Check-Out</option>
+            </select>
+          </label>
+        </div>
+        <div class="row">
+          <button class="btn" id="sop-gen">Generate</button>
+          <button class="btn ghost" id="sop-copy">Copy</button>
+          <button class="btn ghost" id="sop-print">Print</button>
+          <button class="btn ghost" id="sop-download">Download .txt</button>
+        </div>
+        <textarea id="sop-out" class="output" placeholder="SOP output will appear here…"></textarea>
+      </article>
+
+      <!-- Name Helper -->
+      <article class="tool card" id="tool-name">
+        <h2 class="card-title">Name Helper</h2>
+        <p class="muted">Split full name, suggest email slug, and title case.</p>
+        <div class="grid">
+          <label> Full name
+            <input id="nm-full" placeholder="Putu Astika" />
+          </label>
+        </div>
+        <div class="row">
+          <button class="btn" id="nm-format">Format</button>
+          <button class="btn ghost" id="nm-copy">Copy</button>
+        </div>
+        <textarea id="nm-out" class="output" readonly></textarea>
+      </article>
+
+      <!-- WhatsApp Deep-Link Maker -->
+      <article class="tool card" id="tool-wa">
+        <h2 class="card-title">WhatsApp Link</h2>
+        <p class="muted">Create a <code>wa.me</code> link with prefilled message.</p>
+        <div class="grid">
+          <label> Phone (country code, no +)
+            <input id="wa-phone" placeholder="62812xxxxxxx" inputmode="numeric" />
+          </label>
+          <label> Message
+            <input id="wa-text" placeholder="Hello, I’d like to inquire…" />
+          </label>
+        </div>
+        <div class="row">
+          <button class="btn" id="wa-make">Generate</button>
+          <button class="btn ghost" id="wa-open">Open</button>
+          <button class="btn ghost" id="wa-copy">Copy</button>
+        </div>
+        <input id="wa-link" class="output mono" readonly />
+      </article>
+
+      <!-- Mailto Builder -->
+      <article class="tool card" id="tool-mail">
+        <h2 class="card-title">Mailto Builder</h2>
+        <p class="muted">Generate a mailto link with subject and body.</p>
+        <div class="grid">
+          <label> To
+            <input id="ml-to" placeholder="you@example.com" />
+          </label>
+          <label> Subject
+            <input id="ml-sub" placeholder="Inquiry" />
+          </label>
+          <label> Body
+            <input id="ml-body" placeholder="Hi, I’d like to…" />
+          </label>
+        </div>
+        <div class="row">
+          <button class="btn" id="ml-make">Generate</button>
+          <button class="btn ghost" id="ml-open">Open</button>
+          <button class="btn ghost" id="ml-copy">Copy</button>
+        </div>
+        <input id="ml-link" class="output mono" readonly />
+      </article>
+
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p class="muted">© 2025 Mini-Tools • Built for portfolio showcase</p>
+  </footer>
+
+  <div id="toast" role="status" aria-live="polite"></div>
+  <script src="assets/js/main.js"></script>
+
+  <button id="theme-toggle" class="btn ghost" aria-label="Toggle theme">Toggle Theme</button>
+<script src="assets/js/main.js"></script> <!-- letakkan sebelum </body> -->
+
+</body>
+</html>
