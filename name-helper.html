@@ -4,13 +4,13 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Name Helper — MiniTools</title>
   <meta name="description" content="Split full name, suggest email slug, and title case."/>
-  <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="../assets/css/main.css" />
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/css/main.css" />
 </head>
 <body class="page">
 <header class="header">
   <div class="container nav">
-    <a class="brand" href="../index.html"><img src="../assets/img/logo.svg" alt="MiniTools"/><div class="name">MiniTools</div></a>
+    <a class="brand" href="index.html"><img src="assets/img/logo.svg" alt="MiniTools"/><div class="name">MiniTools</div></a>
     <nav id="menu" class="menu"><a href="index.html" data-active="tools">All Tools</a></nav>
     <div class="theme"><button id="themeToggle" class="menu-toggle">Theme</button><button id="menuToggle" class="menu-toggle">Menu</button></div>
   </div>
@@ -30,7 +30,7 @@
   </div>
 </main>
 <footer class="footer"><div class="container"><p class="small">© MiniTools</p></div></footer>
-<script src="../assets/js/main.js"></script>
+<script src="assets/js/main.js"></script>
 <script>
 function titleCase(s){return s.toLowerCase().replace(/\b([a-z\u00C0-\u024F])(\S*)/g,(m,a,b)=>a.toUpperCase()+b);}
 function slugify(s){return s.normalize('NFKD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-zA-Z0-9]+/g,'-').replace(/^-+|-+$/g,'').toLowerCase();}
