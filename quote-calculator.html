@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Quote Calculator — MiniTools</title>
+  <meta name="description" content="Compute stay cost: nights × rate + tax (± discount)."/>
+  <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../assets/css/main.css" />
+</head>
+<body class="page">
+<header class="header">
+  <div class="container nav">
+    <a class="brand" href="../index.html"><img src="../assets/img/logo.svg" alt="MiniTools"/><div class="name">MiniTools</div></a>
+    <nav id="menu" class="menu"><a href="index.html" data-active="tools">All Tools</a></nav>
+    <div class="theme"><button id="themeToggle" class="menu-toggle">Theme</button><button id="menuToggle" class="menu-toggle">Menu</button></div>
+  </div>
+</header>
+<main class="section container tool">
+  <h1>Quote Calculator</h1>
+  <div class="panel">
+    <div class="qc-grid">
+      <label>
+        <span>Nights</span>
+        <input class="input" type="number" id="nights" min="1" value="1">
+      </label>
+      <label>
+        <span>Rate / Night</span>
+        <input class="input" type="number" id="rate" min="0" value="15000">
+      </label>
+      <label>
+        <span>Tax (%)</span>
+        <input class="input" type="number" id="tax" min="0" value="10">
+      </label>
+      <label>
+        <span>Discount (%)</span>
+        <input class="input" type="number" id="disc" min="0" value="0">
+      </label>
+      <label class="full">
+        <span>Currency</span>
+        <select class="input" id="cur">
+          <option>IDR</option><option>USD</option>
+        </select>
+      </label>
+    </div>
+
+    <div class="qc-actions">
+      <button class="btn primary" id="calc">Calculate</button>
+      <button class="btn" id="copy">Copy</button>
+      <button class="btn" id="reset">Reset</button>
+    </div>
+
+    <div class="qc-result">
+      <strong>Result</strong>
+      <pre class="output" id="out">—</pre>
+    </div>
+  </div>
+</main>
+
+<footer class="footer"><div class="container"><p class="small">© MiniTools</p></div></footer>
+<script src="../assets/js/main.js"></script>
+<script>
+function fmt(n, cur){ return (cur==='USD' ? new Intl.NumberFormat('en-US',{style:'currency',currency:'USD'}) : new Intl.NumberFormat('id-ID',{style:'currency',currency:'IDR'})).format(n); }
+function calc(){
+  const nights = +document.getElementById('nights').value||0;
+  const rate = +document.getElementById('rate').value||0;
+  const tax = (+document.getElementById('tax').value||0)/100;
+  const disc = (+document.getElementById('disc').value||0)/100;
+  const cur = document.getElementById('cur').value;
+  const base = nights * rate;
+  const afterDisc = base * (1 - disc);
+  const total = afterDisc * (1 + tax);
+  const lines = [
+    `Nights: ${nights}`,
+    `Rate: ${fmt(rate,cur)}`,
+    `Base: ${fmt(base,cur)}`,
+    disc?`Discount: ${document.getElementById('disc').value}% → ${fmt(base-afterDisc,cur)}`:`Discount: 0%`,
+    `Tax: ${document.getElementById('tax').value}%`,
+    `Total: ${fmt(total,cur)}`
+  ].filter(Boolean).join('\n');
+  document.getElementById('out').innerHTML = lines.replaceAll('\n','<br>');
+  return lines;
+}
+document.getElementById('calc').onclick = calc;
+document.getElementById('copy').onclick = ()=> navigator.clipboard.writeText(calc());
+document.getElementById('reset').onclick = ()=>{['nights','rate','tax','disc'].forEach(id=>document.getElementById(id).value=''); document.getElementById('cur').value='IDR'; document.getElementById('out').textContent='—';}
+</script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Name Helper — MiniTools</title>
+  <meta name="description" content="Split full name, suggest email slug, and title case."/>
+  <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../assets/css/main.css" />
+</head>
+<body class="page">
+<header class="header">
+  <div class="container nav">
+    <a class="brand" href="../index.html"><img src="../assets/img/logo.svg" alt="MiniTools"/><div class="name">MiniTools</div></a>
+    <nav id="menu" class="menu"><a href="index.html" data-active="tools">All Tools</a></nav>
+    <div class="theme"><button id="themeToggle" class="menu-toggle">Theme</button><button id="menuToggle" class="menu-toggle">Menu</button></div>
+  </div>
+</header>
+<main class="container section">
+  <h1>Name Helper</h1>
+  <div class="card tool">
+    <label>Full name<input id="full" placeholder="e.g., Name Helper"></label>
+    <div style="display:flex;gap:8px;flex-wrap:wrap">
+      <button class="btn" id="format">Format</button>
+      <button class="btn secondary" id="copy">Copy</button>
+    </div>
+    <div class="card" style="background:#fff">
+      <strong>Output</strong>
+      <div id="out" class="small">—</div>
+    </div>
+  </div>
+</main>
+<footer class="footer"><div class="container"><p class="small">© MiniTools</p></div></footer>
+<script src="../assets/js/main.js"></script>
+<script>
+function titleCase(s){return s.toLowerCase().replace(/\b([a-z\u00C0-\u024F])(\S*)/g,(m,a,b)=>a.toUpperCase()+b);}
+function slugify(s){return s.normalize('NFKD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-zA-Z0-9]+/g,'-').replace(/^-+|-+$/g,'').toLowerCase();}
+function run(){
+  const full = document.getElementById('full').value.trim().replace(/\s+/g,' ');
+  if(!full){document.getElementById('out').textContent='—';return;}
+  const titled = titleCase(full);
+  const parts = titled.split(' ');
+  const first = parts[0]||''; const last = parts.length>1 ? parts[parts.length-1] : '';
+  const emailSlug = [first,last].filter(Boolean).join('.').toLowerCase();
+  const out = `Title Case: ${titled}\nFirst: ${first}\nLast: ${last}\nEmail Slug: ${emailSlug}`;
+  document.getElementById('out').innerHTML = out.replaceAll('\n','<br>');
+  return out;
+}
+document.getElementById('format').onclick = run;
+document.getElementById('copy').onclick = ()=> navigator.clipboard.writeText(run()||'');
+</script>
+</body>
+</html>

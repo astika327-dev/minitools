@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SOP Printer — MiniTools</title>
+  <meta name="description" content="Generate room-inspection / cleaning SOP text and copy, print, or download."/>
+  <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../assets/css/main.css" />
+</head>
+<body class="page">
+<header class="header">
+  <div class="container nav">
+    <a class="brand" href="../index.html"><img src="../assets/img/logo.svg" alt="MiniTools"/><div class="name">MiniTools</div></a>
+    <nav id="menu" class="menu"><a href="index.html" data-active="tools">All Tools</a></nav>
+    <div class="theme"><button id="themeToggle" class="menu-toggle">Theme</button><button id="menuToggle" class="menu-toggle">Menu</button></div>
+  </div>
+</header>
+<main class="container section">
+  <h1>SOP Printer (Hospitality)</h1>
+  <div class="card tool">
+    <div style="display:grid;gap:12px;grid-template-columns:repeat(4,1fr)">
+      <label>Villa / Room<input id="villa" placeholder="Villa Name / 102"></label>
+      <label>Inspector<input id="inspector" placeholder="Name Inspector"></label>
+      <label>Template<select id="tpl">
+        <option>Pre-Check-In Inspection</option>
+        <option>Room Cleaning</option>
+        <option>Guest Check-Out</option>
+      </select></label>
+      <label>Date<input type="date" id="when"></label>
+    </div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px">
+      <button class="btn" id="gen">Generate</button>
+      <button class="btn secondary" id="copy">Copy</button>
+      <button class="btn secondary" id="print">Print</button>
+      <button class="btn secondary" id="download">Download .txt</button>
+    </div>
+    <textarea id="out" rows="12" placeholder="Generated SOP appears here…"></textarea>
+  </div>
+</main>
+<footer class="footer"><div class="container"><p class="small">© MiniTools</p></div></footer>
+<script src="../assets/js/main.js"></script>
+<script>
+const TPLS = {
+  "Pre-Check-In Inspection":[
+    "- Linen fresh and stain-free",
+    "- Amenities complete (toiletries, water, coffee/tea)",
+    "- AC, lights, and water heater functional",
+    "- Surfaces dust-free; floors mopped",
+    "- Towels folded; bed made properly",
+    "- Welcome message prepared"
+  ],
+  "Room Cleaning":[
+    "- Collect trash; replace liners",
+    "- Strip linens; send to laundry if needed",
+    "- Clean bathroom (mirror, sink, toilet, shower)",
+    "- Wipe surfaces; mop floor",
+    "- Restock amenities",
+    "- Final inspection before leaving room"
+  ],
+  "Guest Check-Out":[
+    "- Collect used linens & towels",
+    "- Check damages / missing items",
+    "- Turn off AC, lights, heater",
+    "- Lock doors & windows",
+    "- Update status to 'vacant & dirty'"
+  ]
+};
+function gen(){
+  const villa = document.getElementById('villa').value||'-';
+  const inspector = document.getElementById('inspector').value||'-';
+  const when = document.getElementById('when').value||new Date().toISOString().slice(0,10);
+  const tpl = document.getElementById('tpl').value;
+  const items = TPLS[tpl].map((x,i)=>`${i+1}. ${x}`).join('\n');
+  const text = `SOP: ${tpl}\nVilla/Room: ${villa}\nInspector: ${inspector}\nDate: ${when}\n\nChecklist:\n${items}\n`;
+  document.getElementById('out').value = text;
+  return text;
+}
+document.getElementById('gen').onclick = gen;
+document.getElementById('copy').onclick = ()=> navigator.clipboard.writeText(document.getElementById('out').value||gen());
+document.getElementById('print').onclick = ()=>{
+  const w = window.open('', '_blank'); w.document.write('<pre>'+ (document.getElementById('out').value||gen()).replace(/[&<>]/g,s=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[s])) +'</pre>'); w.document.close(); w.focus(); w.print();
+};
+document.getElementById('download').onclick = ()=>{
+  const blob = new Blob([document.getElementById('out').value||gen()], {type:'text/plain'});
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'sop.txt'; a.click(); URL.revokeObjectURL(a.href);
+};
+</script>
+</body>
+</html>
