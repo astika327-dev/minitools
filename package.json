@@ -7,7 +7,8 @@
     "build": "vite build",
     "preview": "vite preview",
     "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
-    "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch"
+    "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+    "test": "vitest"
   },
   "devDependencies": {
     "@sveltejs/adapter-static": "^2.0.0",
@@ -23,7 +24,12 @@
     "qrcode": "^1.5.3",
     "@types/qrcode": "^1.5.1",
     "marked": "^5.1.2",
-    "@types/marked": "^5.0.1"
+    "@types/marked": "^5.0.1",
+    "bits-ui": "^0.11.0",
+    "clsx": "^2.0.0",
+    "tailwind-variants": "^0.1.18",
+    "tailwindcss-animate": "^1.0.7",
+    "vitest": "^0.34.6"
   },
   "type": "module"
 }
