@@ -1,41 +1,34 @@
 <script lang="ts">
   import '../app.css';
-  import { onMount } from 'svelte';
+  import Button from '$lib/components/ui/button/button.svelte';
+  import { isDarkMode } from '$lib/stores/theme';
+  import { fade } from 'svelte/transition';
 
-  let isDarkMode = false;
-
-  onMount(() => {
-    // Check for saved theme in local storage or user's OS preference
-    if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-      document.documentElement.classList.add('dark');
-      isDarkMode = true;
-    } else {
-      document.documentElement.classList.remove('dark');
-      isDarkMode = false;
-    }
-  });
+  export let data;
 
   function toggleDarkMode() {
-    isDarkMode = !isDarkMode;
-    if (isDarkMode) {
-      localStorage.theme = 'dark';
-      document.documentElement.classList.add('dark');
-    } else {
-      localStorage.theme = 'light';
-      document.documentElement.classList.remove('dark');
-    }
+    isDarkMode.update(n => !n);
   }
 </script>
 
-<div class="min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-300">
-  <header class="p-4 flex justify-between items-center">
+<div class="min-h-screen bg-background text-foreground">
+  <header class="p-4 flex justify-between items-center border-b">
     <a href="/" class="text-xl font-bold">Multi Tool</a>
-    <button on:click={toggleDarkMode} class="p-2 rounded-full bg-gray-200 dark:bg-gray-700">
-      {isDarkMode ? '🌞' : '🌜'}
-    </button>
+    <Button on:click={toggleDarkMode} variant="outline" size="icon">
+      {#if $isDarkMode}
+        <span>🌞</span>
+      {:else}
+        <span>🌜</span>
+      {/if}
+      <span class="sr-only">Toggle theme</span>
+    </Button>
   </header>
 
-  <main>
-    <slot />
+  <main class="p-4">
+    {#key data.pathname}
+      <div in:fade={{ duration: 150, delay: 150 }} out:fade={{ duration: 150 }}>
+        <slot />
+      </div>
+    {/key}
   </main>
 </div>
