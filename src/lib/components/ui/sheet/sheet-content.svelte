@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Dialog as SheetPrimitive } from "bits-ui";
+  import { Drawer as SheetPrimitive } from "bits-ui";
   import { cn } from "$lib/utils";
   import { tv, type VariantProps } from "tailwind-variants";
   import { X } from "lucide-svelte";

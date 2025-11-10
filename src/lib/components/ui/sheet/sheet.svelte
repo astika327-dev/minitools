@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Dialog as SheetPrimitive } from "bits-ui";
+  import { Drawer as SheetPrimitive } from "bits-ui";
 
   type Props = SheetPrimitive.Props;
 
