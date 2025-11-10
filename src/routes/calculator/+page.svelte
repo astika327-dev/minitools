@@ -11,7 +11,7 @@
     deleteLastChar,
     calculateResult,
   } from '$lib/logic/calculator';
-  import Button from '$lib/components/ui/button/button.svelte';
+  import { Button } from '$lib/components/ui/button';
 
   let state = getInitialState();
 
