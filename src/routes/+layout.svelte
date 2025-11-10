@@ -1,6 +1,6 @@
 <script lang="ts">
   import '../app.css';
-  import Button from '$lib/components/ui/button/button.svelte';
+  import { Button } from '$lib/components/ui/button';
   import { isDarkMode } from '$lib/stores/theme';
   import { fade } from 'svelte/transition';
 
