@@ -6,6 +6,9 @@
     { href: "/category/text-content", name: "Text & Content" },
     { href: "/category/web-security", name: "Web & Security" },
     { href: "/category/financial-health", name: "Financial & Health" },
+    { href: "/category/color-design", name: "Color & Design" },
+    { href: "/category/image-utilities", name: "Image Utilities" },
+    { href: "/category/time-utilities", name: "Time Utilities" },
   ];
 </script>
 

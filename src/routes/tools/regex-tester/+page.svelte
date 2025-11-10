@@ -4,10 +4,19 @@
 </svelte:head>
 
 <script lang="ts">
+  import HowToUse from '$lib/components/HowToUse.svelte';
+
   let regexStr = "\\b[A-Z]{2,}\\b";
   let testStr = "This is a TEST sentence with ACRONYMS.";
   let flags = "g";
   let highlightedText = "";
+
+  const steps = [
+    "Enter your regular expression in the first input field (e.g., <code>\\d+</code> to find numbers).",
+    "Enter the text you want to test against in the large text area.",
+    "Optionally, add any flags (like <code>g</code> for global search or <code>i</code> for case-insensitive) in the small flags input.",
+    "The result will be displayed below, with all matches highlighted."
+  ];
 
   function testRegex() {
     try {
@@ -58,4 +67,6 @@
       </div>
     </div>
   </div>
+
+  <HowToUse {steps} />
 </div>

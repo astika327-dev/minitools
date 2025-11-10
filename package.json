@@ -32,7 +32,11 @@
     "vitest": "^0.34.6",
     "lucide-svelte": "^0.292.0",
     "diff": "^5.1.0",
-    "@types/diff": "^5.0.4"
+    "@types/diff": "^5.0.4",
+    "tinycolor2": "^1.6.0",
+    "@types/tinycolor2": "^1.4.4",
+    "date-fns": "^2.30.0",
+    "date-fns-tz": "^2.0.0"
   },
   "type": "module"
 }
