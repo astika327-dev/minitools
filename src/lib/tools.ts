@@ -11,7 +11,7 @@ import {
   FileText,
   GitCompareArrows,
   Regex,
-  HandCoins,
+  Coins,
   Percent,
   CalculatorIcon,
   Landmark
@@ -123,7 +123,7 @@ export const toolGroups: ToolGroup[] = [
         href: "/tools/tip-calculator",
         title: "Tip Calculator",
         description: "Calculate tips for services quickly.",
-        icon: HandCoins,
+        icon: Coins,
       },
       {
         href: "/tools/percentage-calculator",
