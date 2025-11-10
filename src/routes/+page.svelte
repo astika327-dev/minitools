@@ -5,6 +5,15 @@
 
 <script lang="ts">
   import * as Card from "$lib/components/ui/card";
+  import {
+    Calculator,
+    Ruler,
+    CalendarDays,
+    Pilcrow,
+    Text,
+    KeyRound,
+    QrCode,
+  } from "lucide-svelte";
 
   const toolGroups = [
     {
@@ -14,16 +23,19 @@
           href: "/calculator",
           title: "Calculator",
           description: "A simple calculator for your daily needs.",
+          icon: Calculator,
         },
         {
           href: "/unit-converter",
           title: "Unit Converter",
           description: "Convert between different units of measurement.",
+          icon: Ruler,
         },
         {
           href: "/date-calculator",
           title: "Date Calculator",
           description: "Calculate the duration between two dates.",
+          icon: CalendarDays,
         },
       ],
     },
@@ -34,11 +46,13 @@
           href: "/word-counter",
           title: "Word Counter",
           description: "Count words and characters in your text.",
+          icon: Pilcrow,
         },
         {
           href: "/markdown-editor",
           title: "Markdown Editor",
           description: "A simple markdown editor with live preview.",
+          icon: Text,
         },
       ],
     },
@@ -49,11 +63,13 @@
           href: "/password-generator",
           title: "Password Generator",
           description: "Generate strong and secure passwords.",
+          icon: KeyRound,
         },
         {
           href: "/qr-code-generator",
           title: "QR Code Generator",
           description: "Create QR codes from text or URLs.",
+          icon: QrCode,
         },
       ],
     },
@@ -72,7 +88,10 @@
             <a href={tool.href} class="block group">
               <Card.Root class="transition-all duration-200 ease-in-out group-hover:shadow-lg group-hover:border-primary h-full">
                 <Card.Header>
-                  <Card.Title>{tool.title}</Card.Title>
+                  <Card.Title class="flex items-center gap-2">
+                    <svelte:component this={tool.icon} class="w-5 h-5" />
+                    <span>{tool.title}</span>
+                  </Card.Title>
                   <Card.Description>{tool.description}</Card.Description>
                 </Card.Header>
               </Card.Root>
