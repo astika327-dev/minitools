@@ -6,41 +6,56 @@
 <script lang="ts">
   import * as Card from "$lib/components/ui/card";
 
-  const tools = [
+  const toolGroups = [
     {
-      href: "/calculator",
-      title: "Calculator",
-      description: "A simple calculator for your daily needs.",
+      title: "Calculations & Conversions",
+      tools: [
+        {
+          href: "/calculator",
+          title: "Calculator",
+          description: "A simple calculator for your daily needs.",
+        },
+        {
+          href: "/unit-converter",
+          title: "Unit Converter",
+          description: "Convert between different units of measurement.",
+        },
+        {
+          href: "/date-calculator",
+          title: "Date Calculator",
+          description: "Calculate the duration between two dates.",
+        },
+      ],
     },
     {
-      href: "/unit-converter",
-      title: "Unit Converter",
-      description: "Convert between different units of measurement.",
+      title: "Text & Content",
+      tools: [
+        {
+          href: "/word-counter",
+          title: "Word Counter",
+          description: "Count words and characters in your text.",
+        },
+        {
+          href: "/markdown-editor",
+          title: "Markdown Editor",
+          description: "A simple markdown editor with live preview.",
+        },
+      ],
     },
     {
-      href: "/word-counter",
-      title: "Word Counter",
-      description: "Count words and characters in your text.",
-    },
-    {
-      href: "/password-generator",
-      title: "Password Generator",
-      description: "Generate strong and secure passwords.",
-    },
-    {
-      href: "/qr-code-generator",
-      title: "QR Code Generator",
-      description: "Create QR codes from text or URLs.",
-    },
-    {
-      href: "/date-calculator",
-      title: "Date Calculator",
-      description: "Calculate the duration between two dates.",
-    },
-    {
-      href: "/markdown-editor",
-      title: "Markdown Editor",
-      description: "A simple markdown editor with live preview.",
+      title: "Web & Security Utilities",
+      tools: [
+        {
+          href: "/password-generator",
+          title: "Password Generator",
+          description: "Generate strong and secure passwords.",
+        },
+        {
+          href: "/qr-code-generator",
+          title: "QR Code Generator",
+          description: "Create QR codes from text or URLs.",
+        },
+      ],
     },
   ];
 </script>
@@ -48,16 +63,23 @@
 <div class="container mx-auto p-4">
   <h1 class="text-4xl font-bold text-center my-8">Multi Tool App</h1>
 
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-    {#each tools as tool}
-      <a href={tool.href} class="block group">
-        <Card.Root class="transition-all duration-200 ease-in-out group-hover:shadow-lg group-hover:border-primary">
-          <Card.Header>
-            <Card.Title>{tool.title}</Card.Title>
-            <Card.Description>{tool.description}</Card.Description>
-          </Card.Header>
-        </Card.Root>
-      </a>
+  <div class="space-y-12">
+    {#each toolGroups as group}
+      <section>
+        <h2 class="text-2xl font-semibold mb-4 border-b pb-2">{group.title}</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {#each group.tools as tool}
+            <a href={tool.href} class="block group">
+              <Card.Root class="transition-all duration-200 ease-in-out group-hover:shadow-lg group-hover:border-primary h-full">
+                <Card.Header>
+                  <Card.Title>{tool.title}</Card.Title>
+                  <Card.Description>{tool.description}</Card.Description>
+                </Card.Header>
+              </Card.Root>
+            </a>
+          {/each}
+        </div>
+      </section>
     {/each}
   </div>
 </div>
