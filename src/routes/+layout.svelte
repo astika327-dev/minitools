@@ -3,6 +3,7 @@
   import { Button } from '$lib/components/ui/button';
   import { isDarkMode } from '$lib/stores/theme';
   import { fade } from 'svelte/transition';
+  import Navbar from '$lib/components/Navbar.svelte';
 
   export let data;
 
@@ -13,7 +14,10 @@
 
 <div class="min-h-screen bg-background text-foreground">
   <header class="p-4 flex justify-between items-center border-b">
-    <a href="/" class="text-xl font-bold">Multi Tool</a>
+    <div class="flex items-center gap-6">
+      <a href="/" class="text-xl font-bold">Multi Tool</a>
+      <Navbar />
+    </div>
     <Button on:click={toggleDarkMode} variant="outline" size="icon">
       {#if $isDarkMode}
         <span>🌞</span>
