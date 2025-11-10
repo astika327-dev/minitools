@@ -60,27 +60,27 @@
   </div>
 
   <div class="grid grid-cols-4 gap-4">
-    <Button on:click={handleClear} variant="destructive" class="col-span-2">C</Button>
-    <Button on:click={handleDelete} variant="secondary">DEL</Button>
-    <Button on:click={() => handleAppend('/')} variant="outline">/</Button>
+    <Button on:click={handleClear} variant="destructive" class="col-span-2 text-lg">C</Button>
+    <Button on:click={handleDelete} variant="secondary" class="text-lg">DEL</Button>
+    <Button on:click={() => handleAppend('/')} variant="outline" class="text-lg">/</Button>
 
-    <Button on:click={() => handleAppend('7')}>7</Button>
-    <Button on:click={() => handleAppend('8')}>8</Button>
-    <Button on:click={() => handleAppend('9')}>9</Button>
-    <Button on:click={() => handleAppend('*')} variant="outline">*</Button>
+    <Button on:click={() => handleAppend('7')} variant="secondary" class="text-lg">7</Button>
+    <Button on:click={() => handleAppend('8')} variant="secondary" class="text-lg">8</Button>
+    <Button on:click={() => handleAppend('9')} variant="secondary" class="text-lg">9</Button>
+    <Button on:click={() => handleAppend('*')} variant="outline" class="text-lg">*</Button>
 
-    <Button on:click={() => handleAppend('4')}>4</Button>
-    <Button on:click={() => handleAppend('5')}>5</Button>
-    <Button on:click={() => handleAppend('6')}>6</Button>
-    <Button on:click={() => handleAppend('-')} variant="outline">-</Button>
+    <Button on:click={() => handleAppend('4')} variant="secondary" class="text-lg">4</Button>
+    <Button on:click={() => handleAppend('5')} variant="secondary" class="text-lg">5</Button>
+    <Button on:click={() => handleAppend('6')} variant="secondary" class="text-lg">6</Button>
+    <Button on:click={() => handleAppend('-')} variant="outline" class="text-lg">-</Button>
 
-    <Button on:click={() => handleAppend('1')}>1</Button>
-    <Button on:click={() => handleAppend('2')}>2</Button>
-    <Button on:click={() => handleAppend('3')}>3</Button>
-    <Button on:click={() => handleAppend('+')} variant="outline">+</Button>
+    <Button on:click={() => handleAppend('1')} variant="secondary" class="text-lg">1</Button>
+    <Button on:click={() => handleAppend('2')} variant="secondary" class="text-lg">2</Button>
+    <Button on:click={() => handleAppend('3')} variant="secondary" class="text-lg">3</Button>
+    <Button on:click={() => handleAppend('+')} variant="outline" class="text-lg">+</Button>
 
-    <Button on:click={() => handleAppend('0')} class="col-span-2">0</Button>
-    <Button on:click={() => handleAppend('.')}>.</Button>
-    <Button on:click={handleCalculate} variant="default">=</Button>
+    <Button on:click={() => handleAppend('0')} variant="secondary" class="col-span-2 text-lg">0</Button>
+    <Button on:click={() => handleAppend('.')} variant="secondary" class="text-lg">.</Button>
+    <Button on:click={handleCalculate} variant="default" class="text-lg">=</Button>
   </div>
 </div>
