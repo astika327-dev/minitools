@@ -48,10 +48,10 @@
 <div class="container mx-auto p-4">
   <h1 class="text-4xl font-bold text-center my-8">Multi Tool App</h1>
 
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
     {#each tools as tool}
-      <a href={tool.href} class="block hover:scale-105 transition-transform">
-        <Card.Root>
+      <a href={tool.href} class="block group">
+        <Card.Root class="transition-all duration-200 ease-in-out group-hover:shadow-lg group-hover:border-primary">
           <Card.Header>
             <Card.Title>{tool.title}</Card.Title>
             <Card.Description>{tool.description}</Card.Description>
