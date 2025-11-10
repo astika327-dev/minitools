@@ -14,7 +14,19 @@ import {
   Coins,
   Percent,
   CalculatorIcon,
-  Landmark
+  Landmark,
+  Link,
+  Binary,
+  Braces,
+  Hash,
+  Fingerprint,
+  SquareCode,
+  Clock,
+  Palette,
+  Pipette,
+  Image,
+  FileImage,
+  Globe
 } from "lucide-svelte";
 
 export type Tool = {
@@ -113,6 +125,48 @@ export const toolGroups: ToolGroup[] = [
         description: "Create QR codes from text or URLs.",
         icon: QrCode,
       },
+      {
+        href: "/tools/url-encoder-decoder",
+        title: "URL Encoder/Decoder",
+        description: "Encode or decode URLs and strings.",
+        icon: Link,
+      },
+      {
+        href: "/tools/base64-encoder-decoder",
+        title: "Base64 Encoder/Decoder",
+        description: "Encode or decode strings to Base64.",
+        icon: Binary,
+      },
+      {
+        href: "/tools/json-formatter",
+        title: "JSON Formatter",
+        description: "Format and validate JSON data.",
+        icon: Braces,
+      },
+      {
+        href: "/tools/hash-generator",
+        title: "Hash Generator",
+        description: "Generate hashes (MD5, SHA-1, etc.).",
+        icon: Hash,
+      },
+      {
+        href: "/tools/uuid-generator",
+        title: "UUID Generator",
+        description: "Generate universally unique identifiers.",
+        icon: Fingerprint,
+      },
+      {
+        href: "/tools/jwt-decoder",
+        title: "JWT Decoder",
+        description: "Decode and inspect JSON Web Tokens.",
+        icon: SquareCode,
+      },
+      {
+        href: "/tools/unix-timestamp-converter",
+        title: "UNIX Timestamp Converter",
+        description: "Convert timestamps to human-readable dates.",
+        icon: Clock,
+      },
     ],
   },
   {
@@ -142,6 +196,54 @@ export const toolGroups: ToolGroup[] = [
         title: "Loan Calculator",
         description: "Estimate loan payments and amortization.",
         icon: Landmark,
+      },
+    ],
+  },
+  {
+    slug: "color-design",
+    title: "Color & Design Tools",
+    tools: [
+      {
+        href: "/tools/color-picker-converter",
+        title: "Color Picker & Converter",
+        description: "Pick a color and convert it to any format.",
+        icon: Pipette,
+      },
+      {
+        href: "/tools/color-palette-generator",
+        title: "Color Palette Generator",
+        description: "Generate beautiful color palettes.",
+        icon: Palette,
+      },
+    ],
+  },
+  {
+    slug: "image-utilities",
+    title: "Image Utilities",
+    tools: [
+      {
+        href: "/tools/image-to-base64",
+        title: "Image to Base64",
+        description: "Convert images to Base64 data URLs.",
+        icon: FileImage,
+      },
+      {
+        href: "/tools/image-compressor",
+        title: "Image Compressor",
+        description: "Compress JPEG and PNG images in your browser.",
+        icon: Image,
+      },
+    ],
+  },
+  {
+    slug: "time-utilities",
+    title: "Time Utilities",
+    tools: [
+      {
+        href: "/tools/time-zone-converter",
+        title: "Time Zone Converter",
+        description: "Convert times between different time zones.",
+        icon: Globe,
       },
     ],
   },
