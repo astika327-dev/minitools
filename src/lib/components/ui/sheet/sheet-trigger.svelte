@@ -1,14 +1,10 @@
 <script lang="ts">
-  import { Drawer as SheetPrimitive } from "bits-ui";
+  import { Dialog as SheetPrimitive } from "bits-ui";
 
   type Props = SheetPrimitive.TriggerProps;
   type Events = SheetPrimitive.TriggerEvents;
-
-  let props: Props = {
-    ...$$restProps,
-  };
 </script>
 
-<SheetPrimitive.Trigger {...props} on:m-click on:m-keydown>
-  <slot />
+<SheetPrimitive.Trigger {...$$restProps} asChild let:builder on:m-click on:m-keydown>
+  <slot {builder} />
 </SheetPrimitive.Trigger>
