@@ -218,24 +218,6 @@ export const toolGroups: ToolGroup[] = [
     ],
   },
   {
-    slug: "image-utilities",
-    title: "Image Utilities",
-    tools: [
-      {
-        href: "/tools/image-to-base64",
-        title: "Image to Base64",
-        description: "Convert images to Base64 data URLs.",
-        icon: FileImage,
-      },
-      {
-        href: "/tools/image-compressor",
-        title: "Image Compressor",
-        description: "Compress JPEG and PNG images in your browser.",
-        icon: Image,
-      },
-    ],
-  },
-  {
     slug: "time-utilities",
     title: "Time Utilities",
     tools: [
