@@ -1,9 +1,8 @@
 <script lang="ts">
-  import { Dialog as SheetPrimitive } from "bits-ui";
+  import { Drawer as SheetPrimitive } from "bits-ui";
   import { cn } from "$lib/utils";
   import { tv, type VariantProps } from "tailwind-variants";
   import { X } from "lucide-svelte";
-  import { fly, fade } from "svelte/transition";
 
   type Props = SheetPrimitive.ContentProps;
   type Events = SheetPrimitive.ContentEvents;
@@ -27,47 +26,33 @@
       side: "right",
     },
   });
-
-  const transition = side === "top" || side === "bottom" ? fly : fly;
-  const transitionConfig =
-    side === "top"
-      ? { y: "-100%", duration: 300 }
-      : side === "bottom"
-      ? { y: "100%", duration: 300 }
-      : side === "left"
-      ? { x: "-100%", duration: 300 }
-      : { x: "100%", duration: 300 };
 </script>
 
 <SheetPrimitive.Portal>
   <SheetPrimitive.Overlay
     class="fixed inset-0 z-50 bg-black/80"
-    transition={fade}
     transitionConfig={{
       duration: 150,
     }}
   />
   <SheetPrimitive.Content
     {...$$restProps}
-    {transition}
-    {transitionConfig}
     class={cn(sheetVariants({ side }), className)}
-    asChild
-    let:builder
+    transitionConfig={{
+      duration: 300,
+    }}
     on:m-open
     on:m-close
     on:m-escape
     on:m-pointerdown
     on:m-focusout
   >
-    <div {...builder} use:builder.action>
-      <slot />
-      <SheetPrimitive.Close
-        class="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-secondary"
-      >
-        <X class="h-4 w-4" />
-        <span class="sr-only">Close</span>
-      </SheetPrimitive.Close>
-    </div>
+    <slot />
+    <SheetPrimitive.Close
+      class="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-secondary"
+    >
+      <X class="h-4 w-4" />
+      <span class="sr-only">Close</span>
+    </SheetPrimitive.Close>
   </SheetPrimitive.Content>
 </SheetPrimitive.Portal>
