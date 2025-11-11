@@ -6,6 +6,7 @@
 <script lang="ts">
   import { Button } from '$lib/components/ui/button';
   import HowToUse from '$lib/components/HowToUse.svelte';
+  import { browser } from '$app/environment';
 
   let base64String = "";
   let originalImageSrc = "";
@@ -41,6 +42,7 @@
   ];
 </script>
 
+{#if browser}
 <div class="container mx-auto p-4 max-w-3xl">
   <h1 class="text-3xl font-bold text-center my-6">Image to Base64 Converter</h1>
 
@@ -84,3 +86,4 @@
 
   <HowToUse {steps} />
 </div>
+{/if}

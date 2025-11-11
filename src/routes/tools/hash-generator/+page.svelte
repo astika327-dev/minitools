@@ -58,16 +58,16 @@
 
     <div class="space-y-3">
       <div>
-        <label class="font-semibold">SHA-1</label>
-        <input type="text" readonly value={sha1} class="w-full mt-1 p-2 border rounded-md bg-muted font-mono" />
+        <label for="sha1-output" class="font-semibold">SHA-1</label>
+        <input id="sha1-output" type="text" readonly value={sha1} class="w-full mt-1 p-2 border rounded-md bg-muted font-mono" />
       </div>
       <div>
-        <label class="font-semibold">SHA-256</label>
-        <input type="text" readonly value={sha256} class="w-full mt-1 p-2 border rounded-md bg-muted font-mono" />
+        <label for="sha256-output" class="font-semibold">SHA-256</label>
+        <input id="sha256-output" type="text" readonly value={sha256} class="w-full mt-1 p-2 border rounded-md bg-muted font-mono" />
       </div>
       <div>
-        <label class="font-semibold">SHA-512</label>
-        <input type="text" readonly value={sha512} class="w-full mt-1 p-2 border rounded-md bg-muted font-mono" />
+        <label for="sha512-output" class="font-semibold">SHA-512</label>
+        <input id="sha512-output" type="text" readonly value={sha512} class="w-full mt-1 p-2 border rounded-md bg-muted font-mono" />
       </div>
     </div>
   </div>
