@@ -52,8 +52,6 @@
     };
   }
 
-  $: if(originalFile) compressImage();
-
   const steps = [
     "Upload a JPEG or PNG image using the <strong>Choose File</strong> button.",
     "Use the slider to adjust the compression quality (0 is lowest, 1 is highest).",
