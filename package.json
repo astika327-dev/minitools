@@ -11,7 +11,7 @@
     "test": "vitest"
   },
   "engines": {
-    "node": "18.x"
+    "node": "22.x"
   },
   "devDependencies": {
     "@sveltejs/adapter-vercel": "^2.0.0",
