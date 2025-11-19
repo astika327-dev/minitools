@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { Separator } from "$lib/components/ui/separator/index.ts";
   import HowToUse from "$lib/components/HowToUse.svelte";
   import { Button } from "$lib/components/ui/button";
   import { Input } from "$lib/components/ui/input";
@@ -93,7 +92,7 @@
     <p class="text-muted-foreground">{description}</p>
   </div>
 
-  <Separator />
+  <hr class="border-border" />
 
   <div class="grid gap-8 md:grid-cols-2">
     <Card>

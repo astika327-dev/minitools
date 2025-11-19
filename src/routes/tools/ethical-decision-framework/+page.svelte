@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { Separator } from "$lib/components/ui/separator/index.ts";
   import HowToUse from "$lib/components/HowToUse.svelte";
   import { Button } from "$lib/components/ui/button";
   import { Textarea } from "$lib/components/ui/textarea";
@@ -98,7 +97,7 @@
     <p class="text-muted-foreground">{description}</p>
   </div>
 
-  <Separator />
+  <hr class="border-border" />
 
   {#if isFinished}
     <Card>
