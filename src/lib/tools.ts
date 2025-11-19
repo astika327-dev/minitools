@@ -26,7 +26,9 @@ import {
   Pipette,
   Image,
   FileImage,
-  Globe
+  Globe,
+  TimerOff,
+  Scale
 } from "lucide-svelte";
 
 export type Tool = {
@@ -244,6 +246,24 @@ export const toolGroups: ToolGroup[] = [
         title: "Time Zone Converter",
         description: "Convert times between different time zones.",
         icon: Globe,
+      },
+    ],
+  },
+  {
+    slug: "ethics-productivity",
+    title: "Ethics & Productivity",
+    tools: [
+      {
+        href: "/tools/digital-detox-planner",
+        title: "Perencana Detoks Digital",
+        description: "Rencanakan dan lacak waktu istirahat dari layar.",
+        icon: TimerOff,
+      },
+      {
+        href: "/tools/ethical-decision-framework",
+        title: "Kerangka Keputusan Etis",
+        description: "Panduan interaktif untuk mengevaluasi dampak etis produk.",
+        icon: Scale,
       },
     ],
   },
