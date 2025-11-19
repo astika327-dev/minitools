@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Separator } from "$lib/components/ui/separator";
+  import { Separator } from "$lib/components/ui/separator/index.ts";
   import HowToUse from "$lib/components/HowToUse.svelte";
   import { Button } from "$lib/components/ui/button";
   import { Input } from "$lib/components/ui/input";
