@@ -31,7 +31,12 @@ import {
   ShieldCheck,
   TimerOff,
   Scale,
-  ScanSearch
+  ScanSearch,
+  ShieldHalf,
+  Network,
+  MessageSquare,
+  Key,
+  GlobeLock
 } from "lucide-svelte";
 
 export type Tool = {
@@ -171,6 +176,36 @@ export const toolGroups: ToolGroup[] = [
         title: "UNIX Timestamp Converter",
         description: "Convert timestamps to human-readable dates.",
         icon: Clock,
+      },
+      {
+        href: "/tools/sri-hash-generator",
+        title: "SRI Hash Generator",
+        description: "Generate Subresource Integrity hashes for external files.",
+        icon: ShieldHalf,
+      },
+      {
+        href: "/tools/webrtc-leak-tester",
+        title: "WebRTC Leak Tester",
+        description: "Check for IP leaks via WebRTC connections.",
+        icon: GlobeLock,
+      },
+      {
+        href: "/tools/cors-debugger",
+        title: "CORS Simulator & Debugger",
+        description: "Simulate and debug complex Cross-Origin requests.",
+        icon: Network,
+      },
+      {
+        href: "/tools/websocket-client",
+        title: "Interactive WebSocket Client",
+        description: "Connect to and test WebSocket servers in real-time.",
+        icon: MessageSquare,
+      },
+      {
+        href: "/tools/advanced-jwt-debugger",
+        title: "Advanced JWT Debugger",
+        description: "Verify signatures and analyze JWT vulnerabilities.",
+        icon: Key,
       },
     ],
   },
