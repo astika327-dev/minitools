@@ -1,9 +1,7 @@
 <script lang="ts">
   import HowToUse from "$lib/components/HowToUse.svelte";
-  import { Button } from "$lib/components/ui/button";
-  import { Textarea } from "$lib/components/ui/textarea";
-  import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "$lib/components/ui/card";
-  import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "$lib/components/ui/select";
+  import { Button } from "$lib/components/ui/button/index.js";
+  import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "$lib/components/ui/card/index.js";
   import { ShieldAlert } from "lucide-svelte";
 
   const title = "Pemindai Kerentanan Kode AI";
@@ -85,19 +83,14 @@
         <CardDescription>Tempel kode di bawah ini. Layanan ini masih dalam tahap beta dan hasil bersifat simulasi.</CardDescription>
     </CardHeader>
     <CardContent class="space-y-4">
-        <Select bind:value={language}>
-            <SelectTrigger class="w-[180px]">
-                <SelectValue placeholder="Pilih bahasa" />
-            </SelectTrigger>
-            <SelectContent>
-                <SelectItem value="javascript">JavaScript</SelectItem>
-                <SelectItem value="python">Python</SelectItem>
-                <SelectItem value="java">Java</SelectItem>
-                <SelectItem value="php">PHP</SelectItem>
-                <SelectItem value="other">Lainnya</SelectItem>
-            </SelectContent>
-        </Select>
-        <Textarea bind:value={code} rows={12} placeholder="// Tempel kode Anda di sini..." disabled={isLoading} />
+        <select bind:value={language} class="flex h-10 items-center justify-between rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 w-[180px]">
+            <option value="javascript">JavaScript</option>
+            <option value="python">Python</option>
+            <option value="java">Java</option>
+            <option value="php">PHP</option>
+            <option value="other">Lainnya</option>
+        </select>
+        <textarea bind:value={code} rows={12} placeholder="// Tempel kode Anda di sini..." disabled={isLoading} class="flex w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"></textarea>
         <Button on:click={analyzeCode} disabled={isLoading} class="w-full">
           {#if isLoading}
             Menganalisis Kode...

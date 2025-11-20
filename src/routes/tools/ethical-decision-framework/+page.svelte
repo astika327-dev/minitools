@@ -1,8 +1,7 @@
 <script lang="ts">
   import HowToUse from "$lib/components/HowToUse.svelte";
-  import { Button } from "$lib/components/ui/button";
-  import { Textarea } from "$lib/components/ui/textarea";
-  import { Card, CardContent, CardHeader, CardTitle } from "$lib/components/ui/card";
+  import { Button } from "$lib/components/ui/button/index.js";
+  import { Card, CardContent, CardHeader, CardTitle } from "$lib/components/ui/card/index.js";
   import { ArrowLeft, ArrowRight, RefreshCw } from "lucide-svelte";
 
   const title = "Kerangka Keputusan Etis";
@@ -132,11 +131,12 @@
       </CardHeader>
       <CardContent class="space-y-4">
         <p>{questions[currentQuestionIndex].question}</p>
-        <Textarea
+        <textarea
           bind:value={answers[currentQuestionIndex]}
           rows={8}
           placeholder="Tuliskan pemikiran Anda di sini..."
-        />
+          class="flex w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+        ></textarea>
         <div class="flex justify-between">
           <Button variant="outline" on:click={prevQuestion} disabled={currentQuestionIndex === 0}>
             <ArrowLeft class="mr-2 h-4 w-4" />

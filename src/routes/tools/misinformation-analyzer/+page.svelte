@@ -1,9 +1,7 @@
 <script lang="ts">
   import HowToUse from "$lib/components/HowToUse.svelte";
-  import { Button } from "$lib/components/ui/button";
-  import { Input } from "$lib/components/ui/input";
-  import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "$lib/components/ui/card";
-  import { Badge } from "$lib/components/ui/badge";
+  import { Button } from "$lib/components/ui/button/index.js";
+  import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "$lib/components/ui/card/index.js";
   import { Lightbulb, Newspaper, Scale } from "lucide-svelte";
 
   const title = "Penganalisis Berita & Misinformasi";
@@ -74,7 +72,7 @@
     </CardHeader>
     <CardContent>
         <form on:submit|preventDefault={analyzeUrl} class="flex gap-2">
-            <Input bind:value={url} type="url" placeholder="https://contoh-berita.com/artikel..." disabled={isLoading} />
+            <input bind:value={url} type="url" placeholder="https://contoh-berita.com/artikel..." disabled={isLoading} class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50" />
             <Button type="submit" disabled={isLoading}>
               {#if isLoading}
                 Menganalisis...

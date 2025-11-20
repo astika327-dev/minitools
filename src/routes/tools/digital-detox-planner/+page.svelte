@@ -1,9 +1,7 @@
 <script lang="ts">
   import HowToUse from "$lib/components/HowToUse.svelte";
-  import { Button } from "$lib/components/ui/button";
-  import { Input } from "$lib/components/ui/input";
-  import { Checkbox } from "$lib/components/ui/checkbox";
-  import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "$lib/components/ui/card";
+  import { Button } from "$lib/components/ui/button/index.js";
+  import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "$lib/components/ui/card/index.js";
   import { browser } from "$app/environment";
   import { onMount } from "svelte";
   import { Trash2 } from "lucide-svelte";
@@ -102,13 +100,13 @@
       </CardHeader>
       <CardContent class="space-y-4">
         <form on:submit|preventDefault={addGoal} class="flex gap-2">
-          <Input bind:value={newGoalText} placeholder="Contoh: Kurangi waktu layar..." />
+          <input bind:value={newGoalText} placeholder="Contoh: Kurangi waktu layar..." class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50" />
           <Button type="submit">Tambah</Button>
         </form>
         <div class="space-y-2">
           {#each goals as goal, i}
             <div class="flex items-center gap-3 p-2 rounded-md hover:bg-muted">
-              <Checkbox bind:checked={goal.completed} id={`goal-${i}`} />
+              <input type="checkbox" bind:checked={goal.completed} id={`goal-${i}`} class="h-4 w-4 shrink-0 rounded-sm border border-primary ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground" />
               <label for={`goal-${i}`} class="flex-1 text-sm {goal.completed ? 'line-through text-muted-foreground' : ''}">
                 {goal.text}
               </label>
@@ -130,7 +128,7 @@
       </CardHeader>
       <CardContent class="space-y-4">
         <form on:submit|preventDefault={addActivity} class="flex gap-2">
-          <Input bind:value={newActivityText} placeholder="Contoh: Membaca buku..." />
+          <input bind:value={newActivityText} placeholder="Contoh: Membaca buku..." class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50" />
           <Button type="submit">Tambah</Button>
         </form>
         <div class="space-y-2">
