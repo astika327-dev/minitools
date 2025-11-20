@@ -26,7 +26,12 @@ import {
   Pipette,
   Image,
   FileImage,
-  Globe
+  Globe,
+  Newspaper,
+  ShieldCheck,
+  TimerOff,
+  Scale,
+  ScanSearch
 } from "lucide-svelte";
 
 export type Tool = {
@@ -244,6 +249,42 @@ export const toolGroups: ToolGroup[] = [
         title: "Time Zone Converter",
         description: "Convert times between different time zones.",
         icon: Globe,
+      },
+    ],
+  },
+  {
+    slug: "ai-ethics-productivity",
+    title: "AI, Ethics & Productivity",
+    tools: [
+      {
+        href: "/tools/misinformation-analyzer",
+        title: "Penganalisis Berita & Misinformasi",
+        description: "Analisis URL berita untuk mendeteksi bias dan misinformasi.",
+        icon: Newspaper,
+      },
+      {
+        href: "/tools/ai-code-scanner",
+        title: "Pemindai Kerentanan Kode AI",
+        description: "Pindai kode untuk kerentanan keamanan menggunakan AI.",
+        icon: ShieldCheck,
+      },
+      {
+        href: "/tools/digital-detox-planner",
+        title: "Perencana Detoks Digital",
+        description: "Rencanakan dan lacak waktu istirahat dari layar.",
+        icon: TimerOff,
+      },
+      {
+        href: "/tools/ethical-decision-framework",
+        title: "Kerangka Keputusan Etis",
+        description: "Panduan interaktif untuk mengevaluasi dampak etis produk.",
+        icon: Scale,
+      },
+      {
+        href: "/tools/ai-watermark-checker",
+        title: "Pemeriksa Tanda Air Konten AI",
+        description: "Deteksi tanda air atau pola konten buatan AI.",
+        icon: ScanSearch,
       },
     ],
   },
