@@ -1,7 +1,7 @@
 <script lang="ts">
   import HowToUse from "$lib/components/HowToUse.svelte";
-  import { Button } from "$lib/components/ui/button";
-  import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "$lib/components/ui/card";
+  import { Button } from "$lib/components/ui/button/index.js";
+  import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "$lib/components/ui/card/index.js";
   import { UploadCloud, CheckCircle2, XCircle } from "lucide-svelte";
 
   const title = "Pemeriksa Tanda Air Konten AI";

@@ -3,7 +3,6 @@
   import { onDestroy } from "svelte";
   import { Button } from "$lib/components/ui/button/index.js";
   import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "$lib/components/ui/card/index.js";
-  import { Badge } from "$lib/components/ui/badge/index.js";
 
   const title = "Interactive WebSocket Client";
   const description = "Connect to and test WebSocket servers in real-time.";
@@ -105,13 +104,13 @@
          <div class="flex items-center gap-2">
             Status:
             {#if connectionStatus === 'connected'}
-                <Badge variant="success">Tersambung</Badge>
+                <span class="inline-flex items-center rounded-full border border-transparent bg-green-500 px-2.5 py-0.5 text-xs font-semibold text-primary-foreground">Tersambung</span>
             {:else if connectionStatus === 'connecting'}
-                <Badge variant="outline">Menyambungkan...</Badge>
+                <span class="inline-flex items-center rounded-full border border-border px-2.5 py-0.5 text-xs font-semibold">Menyambungkan...</span>
             {:else if connectionStatus === 'disconnected'}
-                <Badge variant="secondary">Terputus</Badge>
+                <span class="inline-flex items-center rounded-full border border-transparent bg-secondary px-2.5 py-0.5 text-xs font-semibold text-secondary-foreground">Terputus</span>
             {:else}
-                <Badge variant="destructive">Error</Badge>
+                <span class="inline-flex items-center rounded-full border border-transparent bg-destructive px-2.5 py-0.5 text-xs font-semibold text-destructive-foreground">Error</span>
             {/if}
          </div>
     </CardContent>
