@@ -64,8 +64,9 @@
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 items-start">
       <div>
-        <label class="font-semibold">Base64 Data URL</label>
+        <label for="base64-output" class="font-semibold">Base64 Data URL</label>
         <textarea
+          id="base64-output"
           readonly
           bind:value={base64String}
           rows="10"
@@ -76,9 +77,9 @@
         {/if}
       </div>
       <div>
-        <label class="font-semibold">Image Preview</label>
+        <label for="image-preview" class="font-semibold">Image Preview</label>
         {#if originalImageSrc}
-          <img src={originalImageSrc} alt="Uploaded preview" class="mt-1 rounded-md border max-h-64" />
+          <img id="image-preview" src={originalImageSrc} alt="Uploaded preview" class="mt-1 rounded-md border max-h-64" />
         {/if}
       </div>
     </div>
