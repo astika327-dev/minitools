@@ -58,5 +58,9 @@
     </nav>
   </div>
   <!-- Overlay -->
-  <div on:click={toggleMobileMenu} class="fixed inset-0 bg-black/60 z-40"></div>
+  <button
+    on:click={toggleMobileMenu}
+    class="fixed inset-0 bg-black/60 z-40 cursor-default"
+    aria-label="Close menu"
+  ></button>
 {/if}

@@ -36,7 +36,7 @@ import {
   Network,
   MessageSquare,
   Key,
-  GlobeLock
+  ShieldAlert
 } from "lucide-svelte";
 
 export type Tool = {
@@ -187,7 +187,7 @@ export const toolGroups: ToolGroup[] = [
         href: "/tools/webrtc-leak-tester",
         title: "WebRTC Leak Tester",
         description: "Check for IP leaks via WebRTC connections.",
-        icon: GlobeLock,
+        icon: ShieldAlert,
       },
       {
         href: "/tools/cors-debugger",
