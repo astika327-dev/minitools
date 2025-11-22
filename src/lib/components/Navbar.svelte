@@ -3,6 +3,7 @@
   import { Menu, X } from "lucide-svelte";
   import { slide } from "svelte/transition";
   import { quintOut } from "svelte/easing";
+  import { page } from '$app/stores';
 
   let isMobileMenuOpen = false;
 
@@ -12,31 +13,39 @@
 
   const categories = [
     { href: "/category/calculations", name: "Calculations" },
-    { href: "/category/text-content", name: "Text & Content" },
-    { href: "/category/web-security", name: "Web & Security" },
-    { href: "/category/financial-health", name: "Financial & Health" },
-    { href: "/category/color-design", name: "Color & Design" },
-    { href: "/category/image-utilities", name: "Image Utilities" },
-    { href: "/category/time-utilities", name: "Time Utilities" },
+    { href: "/category/text-content", name: "Text" },
+    { href: "/category/web-security", name: "Security" },
+    { href: "/category/color-design", name: "Design" },
+    { href: "/category/image-utilities", name: "Images" },
+    { href: "/category/financial-health", name: "Finance" },
+    { href: "/category/time-utilities", name: "Time" },
   ];
+
+  // Helper to determine if a link is active
+  $: isActive = (href: string) => $page.url.pathname.startsWith(href);
 </script>
 
 <!-- Desktop Navbar -->
-<nav class="hidden md:flex items-center space-x-2">
+<nav class="hidden lg:flex items-center gap-1">
   {#each categories as category}
     <a href={category.href}>
-      <Button variant="ghost">{category.name}</Button>
+      <Button
+        variant={isActive(category.href) ? "secondary" : "ghost"}
+        class="text-sm font-medium transition-all duration-200 hover:bg-secondary/80"
+      >
+        {category.name}
+      </Button>
     </a>
   {/each}
 </nav>
 
 <!-- Mobile Navbar (Hamburger) -->
-<div class="flex md:hidden">
-  <Button on:click={toggleMobileMenu} variant="outline" size="icon">
+<div class="flex lg:hidden">
+  <Button on:click={toggleMobileMenu} variant="ghost" size="icon" class="hover:bg-secondary/80">
     {#if isMobileMenuOpen}
-      <X class="h-5 w-5" />
+      <X class="h-5 w-5" strokeWidth={1.5} />
     {:else}
-      <Menu class="h-5 w-5" />
+      <Menu class="h-5 w-5" strokeWidth={1.5} />
     {/if}
     <span class="sr-only">Open Menu</span>
   </Button>
@@ -45,22 +54,27 @@
 <!-- Mobile Menu Panel -->
 {#if isMobileMenuOpen}
   <div
-    transition:slide={{ duration: 300, easing: quintOut, axis: 'x' }}
-    class="fixed top-0 left-0 h-full w-3/4 max-w-sm bg-background p-6 shadow-lg z-50 border-r"
+    transition:slide={{ duration: 300, easing: quintOut, axis: 'y' }}
+    class="fixed inset-x-0 top-[3.5rem] bg-background/95 backdrop-blur-md border-b shadow-lg z-50 p-6 lg:hidden"
   >
-    <h2 class="text-xl font-bold mb-4">Categories</h2>
     <nav class="flex flex-col space-y-2">
       {#each categories as category}
         <a href={category.href} on:click={toggleMobileMenu} class="block">
-          <Button variant="ghost" class="w-full justify-start">{category.name}</Button>
+          <Button
+            variant={isActive(category.href) ? "secondary" : "ghost"}
+            class="w-full justify-start text-base font-medium"
+          >
+            {category.name}
+          </Button>
         </a>
       {/each}
     </nav>
   </div>
-  <!-- Overlay -->
+
+  <!-- Overlay to close when clicking outside (covers the rest of the screen) -->
   <button
     on:click={toggleMobileMenu}
-    class="fixed inset-0 bg-black/60 z-40 cursor-default"
+    class="fixed inset-0 top-[3.5rem] bg-black/20 backdrop-blur-sm z-40 cursor-default lg:hidden"
     aria-label="Close menu"
   ></button>
 {/if}
